@@ -4,6 +4,8 @@ from firebase_admin import credentials
 from firebase_admin import db
 import firebase_admin
 from pyfcm import FCMNotification
+import time
+import threading
 
 push_service = FCMNotification(api_key="AAAA6oFTOZk:APA91bGV8mG3Qm5sVNHc93ek8veiUEU80GcgzXEPYKbH1u0rOIvGAguj5yEDJaaPhKRMmH92bAyssEeE42hxLNrPhopM4rfLd-XRR6jDdSuUmKL1o3uoeuUCKGEzV5VzenOmNLlo3syo")
 
@@ -15,6 +17,24 @@ cred = credentials.Certificate('./FCM_key.json')
 firebase_admin.initialize_app(cred,{
 	'databaseURL' : 'https://fcmtest-2ed81.firebaseio.com/'
 })
+
+def th_read():
+    print("thread starts!")
+    read_data() 
+    threading.Timer(5, th_read).start() #5초마다 함수실행
+
+def camera():
+    global num
+    if ret_some == 'Movement detected!\r\n' and num < 3:
+        global camera
+        camera = Picamera()
+        file_dir = '/home/pi/Desktop/web/static/test' + str(num) + '.jpg'
+        num = num + 1
+        camera.capture(file_dir)
+        camera.close()
+    
+    return render_template('index.html', temper = 0, temperature = ret_tem_n, humidiy = ret_hum_n, gas = ret_gas_n, somebody = ret_some)
+    
 
 def sendMessage():
 	global n
