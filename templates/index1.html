@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		
+		<title>Monitoring Status</title>
+		<style>
+			body {
+				background-color: white;
+			}
+			h1 {
+				color: black;
+                        }
+
+			h2 {
+				color: blue;
+				margin-left: 120px;
+			}
+		</style> 		
+	</head>	
+
+	<body>
+		<h1>Test Page</h1>
+		<hr>
+		<h2>Status value</h2>
+
+
+<br>
+<hr>
+<h1>Snapshot</h1>
+
+<img src="{{ url_for('static', filename='test.jpg') }}" width="140" height="120" />
+<br><br><br>
+
+<p id="gas">100</p>
+<p id="temperature">200</p>
+<p id="humidity">300</p>
+<p id="somebody">400</p>
+	</body>
+</html>
+
