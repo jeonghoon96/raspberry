@@ -11,7 +11,7 @@ push_service = FCMNotification(api_key="AAAA6oFTOZk:APA91bGV8mG3Qm5sVNHc93ek8vei
 
 mToken = ""
 n = 0
-
+id = ""
 
 cred = credentials.Certificate('./FCM_key.json')
 firebase_admin.initialize_app(cred,{
@@ -51,10 +51,6 @@ def sendMessage():
 	print(result)
 
 
-id = ""
-
-tem = 99
-gas = 300
 
 
 
